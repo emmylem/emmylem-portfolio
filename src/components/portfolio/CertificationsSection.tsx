@@ -4,7 +4,7 @@ import { Icon } from "@iconify/react";
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import React, { useState } from "react"; // <-- IMPORT REACT
 import SectionHeader from "./SectionHeader";
 
 type Certificate = {
@@ -13,9 +13,9 @@ type Certificate = {
   platform: string;
   issued: string;
   credentialId: string;
-  credentialLink: string; // <-- Added for flexible links
+  credentialLink: string;
   skills: string[];
-  providerIcon: string | JSX.Element; // Can be iconify string or a custom element
+  providerIcon: React.ReactNode; // <-- CHANGE JSX.Element to React.ReactNode
   color: string;
   certificatePreview: string;
 };
@@ -32,37 +32,37 @@ const certifications: Certificate[] = [
     title: "Software Engineering (12-Month Program)",
     provider: "ALX Africa",
     platform: "ALX",
-    issued: "May 2024", // Assumed date, please update
-    credentialId: "ALX-SE-XXXXXXXX", // <-- Update with your ID
-    credentialLink: "https://intranet.alxafrica.com/certificates/id", // <-- Update with your link
+    issued: "May 2024",
+    credentialId: "ALX-SE-XXXXXXXX",
+    credentialLink: "https://intranet.alxafrica.com/certificates/id",
     skills: ["Full-Stack Development", "Python", "C Language", "JavaScript", "DevOps", "MySQL", "Agile"],
     providerIcon: <AlxLogo />,
-    color: "from-gray-800 to-black", // Navy Blue Theme
-    certificatePreview: "/certificates/cert1.png", // <-- Update with your image path
+    color: "from-gray-800 to-black",
+    certificatePreview: "/certificates/cert1.png",
   },
   {
     title: "AI Career Essentials (ACE)",
     provider: "ALX Africa",
     platform: "ALX",
-    issued: "July 2024", // Assumed date, please update
-    credentialId: "ALX-AI-XXXXXXXX", // <-- Update with your ID
-    credentialLink: "https://intranet.alxafrica.com/certificates/id", // <-- Update with your link
+    issued: "July 2024",
+    credentialId: "ALX-AI-XXXXXXXX",
+    credentialLink: "https://intranet.alxafrica.com/certificates/id",
     skills: ["Machine Learning", "Data Science", "AI Ethics", "Python", "Problem Solving"],
     providerIcon: <AlxLogo />,
-    color: "from-gray-800 to-black", // Navy Blue Theme
-    certificatePreview: "/certificates/cert2.png", // <-- Update with your image path
+    color: "from-gray-800 to-black",
+    certificatePreview: "/certificates/cert2.png",
   },
   {
     title: "Software Engineering Virtual Experience",
     provider: "Wells Fargo",
     platform: "Forage",
-    issued: "August 2024", // Assumed date, please update
-    credentialId: "WF-FORAGE-XXXXXXXX", // <-- Update with your ID
-    credentialLink: "https://www.theforage.com/certificates/id", // <-- Update with your link
+    issued: "August 2024",
+    credentialId: "WF-FORAGE-XXXXXXXX",
+    credentialLink: "https://www.theforage.com/certificates/id",
     skills: ["Agile Methodologies", "Task Management", "Corporate Development", "Version Control"],
-    providerIcon: "mdi:stagecoach", // Icon for Wells Fargo
-    color: "from-red-600 to-red-700", // Red Theme
-    certificatePreview: "/certificates/cert.png3", // <-- Update with your image path
+    providerIcon: <Icon icon="mdi:stagecoach" className="text-4xl text-white" />,
+    color: "from-red-600 to-red-700",
+    certificatePreview: "/certificates/cert3.png",
   }
 ];
 
@@ -162,11 +162,7 @@ export default function CertificationsSection() {
                   {/* Header with gradient */}
                   <div className={`p-4 bg-gradient-to-br ${cert.color} text-white`}>
                     <div className="flex items-center justify-between">
-                      {typeof cert.providerIcon === 'string' ? (
-                        <Icon icon={cert.providerIcon} className="text-4xl" />
-                      ) : (
-                        cert.providerIcon
-                      )}
+                      {cert.providerIcon}
                       <div className="flex items-center gap-2">
                         <Icon icon="solar:verified-check-bold" className="text-2xl" />
                         <span className="font-semibold">Verified</span>

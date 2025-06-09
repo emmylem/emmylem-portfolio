@@ -140,9 +140,9 @@ const TestimonialCard = ({ testimonial, index, isHovered, onHover }: Testimonial
 
           {/* Testimonial Content with Better Typography */}
           <blockquote className="text-gray-700 dark:text-gray-300 leading-relaxed mb-8 text-base font-medium relative">
-            <span className="text-4xl text-gray-300 dark:text-gray-600 absolute -top-2 -left-2 font-serif">"</span>
+            <span className="text-4xl text-gray-300 dark:text-gray-600 absolute -top-2 -left-2 font-serif">&quot;</span>
             <span className="relative z-10 pl-4">{testimonial.content}</span>
-            <span className="text-4xl text-gray-300 dark:text-gray-600 absolute -bottom-6 -right-2 font-serif">"</span>
+            <span className="text-4xl text-gray-300 dark:text-gray-600 absolute -bottom-6 -right-2 font-serif">&quot;</span>
           </blockquote>
 
           {/* Author Section with Enhanced Design */}
@@ -283,9 +283,7 @@ export default function TestimonialsSection() {
             <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
               More Client Feedback
             </h3>
-            <p className="text-gray-600 dark:text-gray-400">
-              Honest words from clients I've had the pleasure to work with.
-            </p>
+            <p className="text-gray-600 dark:text-gray-400">Honest words from clients I&apos;ve had the pleasure to work with.</p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
